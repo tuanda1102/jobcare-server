@@ -43,10 +43,20 @@ const deleteRefreshToken = (userId) => {
   return userUpdate;
 };
 
+const updateProfile = async (userId, payload) => {
+  const newUserProfile = await Users.update(payload, {
+    where: {
+      id: userId,
+    },
+  });
+  return newUserProfile;
+};
+
 module.exports = {
   getUserList,
   getUser,
   createUser,
   updateRefreshToken,
   deleteRefreshToken,
+  updateProfile,
 };

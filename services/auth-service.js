@@ -111,8 +111,8 @@ const loginService = async (req, res) => {
 const logoutService = async (req, res) => {
   try {
     await deleteRefreshToken(req.id);
-    res
-      .status(statusCode.SUCCESS)
+    return res
+      .status(statusCode.OK)
       .send(returnResponse(true, apiMessage.SUCCESS));
   } catch (error) {
     console.log(error);
@@ -131,16 +131,14 @@ const checkUserService = async (req, res) => {
         .json(returnResponse(false, apiMessage.NOT_FOUND));
     }
 
-    return res
-      .status(statusCode.OK)
-      .json(
-        returnResponse(true, apiMessage.SUCCESS, {
-          id: user.id,
-          fullname: user.fullname,
-          email: user.email,
-          role: user.role,
-        })
-      );
+    return res.status(statusCode.OK).json(
+      returnResponse(true, apiMessage.SUCCESS, {
+        id: user.id,
+        fullname: user.fullname,
+        email: user.email,
+        role: user.role,
+      })
+    );
   } catch (error) {
     console.log(error);
     res
