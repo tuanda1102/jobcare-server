@@ -1,4 +1,7 @@
-const { updateUserProfileService } = require("../services/users-service");
+const {
+  updateUserProfileService,
+  getDetailRecruiterService,
+} = require("../services/users-service");
 
 const updateUserProfile = async (req, res) => {
   return await updateUserProfileService(req, res);

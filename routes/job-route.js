@@ -12,13 +12,13 @@ const {
   checkRecruiter,
 } = require("../middleware/auth-middleware");
 
-// @route GET api/jobs/
-// @desc GET all jobs
+// @route GET api/job/
+// @desc GET all job
 // @access public
 jobRoutes.get("/", getAllJobs);
 
-// @route POST api/jobs/
-// @desc create a jobs
+// @route POST api/job/
+// @desc create a job
 // @access private
 jobRoutes.post("/", verifyToken, checkRecruiter, createJob);
 

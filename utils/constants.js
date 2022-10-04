@@ -24,6 +24,7 @@ module.exports = {
     NOT_FOUND: "Dữ liệu không hợp lệ",
     UNAUTHORIZED: "Không được phép truy cập",
     DATA_EXIST: "Dữ liệu đã tồn tại",
+    DATA_FOUND: "Không tìm thấy dữ liệu",
     EXPIRED_DATE:
       "Bạn đã hết thời gian sử dụng ứng dụng, vui lòng liên hệ với chúng tôi để gia hạn!",
   },

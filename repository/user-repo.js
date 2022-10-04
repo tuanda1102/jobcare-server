@@ -52,6 +52,16 @@ const updateProfile = async (userId, payload) => {
   return newUserProfile;
 };
 
+const getDetailRecruiterServer = async (recruiterId) => {
+  const recruiterDetails = await Users.findOne({
+    where: {
+      id: recruiterId,
+    },
+    include: "recruiter_jobs",
+  });
+  return recruiterDetails ? recruiterDetails : false;
+};
+
 module.exports = {
   getUserList,
   getUser,
@@ -59,4 +69,5 @@ module.exports = {
   updateRefreshToken,
   deleteRefreshToken,
   updateProfile,
+  getDetailRecruiterServer,
 };

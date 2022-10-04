@@ -1,6 +1,11 @@
-const { createJobService } = require("../services/job-service");
+const {
+  createJobService,
+  getAllJobsService,
+} = require("../services/job-service");
 
-const getAllJobs = async (req, res) => {};
+const getAllJobs = async (req, res) => {
+  return await getAllJobsService(req, res);
+};
 const createJob = async (req, res) => {
   return await createJobService(req, res);
 };

@@ -1,4 +1,4 @@
-const { createJobServer } = require("../repository/job-repo");
+const { createJobServer, getAllJobsServer } = require("../repository/job-repo");
 const { getUser } = require("../repository/user-repo");
 const {
   returnResponse,
@@ -7,7 +7,7 @@ const {
 const { ROLE, apiMessage, statusCode } = require("../utils/constants");
 
 const createJobService = async (req, res) => {
-  const { email, role } = req;
+  const { email, role, id } = req;
 
   const recruiter = await getUser(email);
 
@@ -18,7 +18,7 @@ const createJobService = async (req, res) => {
   }
 
   try {
-    const newJob = await createJobServer(req.body);
+    const newJob = await createJobServer({ ...req.body, recruiterId: id });
 
     return res
       .status(statusCode.OK)
@@ -31,4 +31,25 @@ const createJobService = async (req, res) => {
   }
 };
 
-module.exports = { createJobService };
+const getAllJobsService = async (req, res) => {
+  const jobList = await getAllJobsServer();
+
+  if (!jobList) {
+    return res
+      .status(statusCode.BAD_REQUEST)
+      .json(returnResponse(false, apiMessage.DATA_FOUND));
+  }
+
+  try {
+    return res
+      .status(statusCode.OK)
+      .json(returnResponse(false, apiMessage.SUCCESS, jobList));
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(statusCode.INTERNAL_SERVER_ERROR)
+      .json(returnResponseServerError());
+  }
+};
+
+module.exports = { createJobService, getAllJobsService };

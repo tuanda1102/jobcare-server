@@ -5,4 +5,9 @@ const createJobServer = async (data) => {
   return newJob;
 };
 
-module.exports = { createJobServer };
+const getAllJobsServer = async () => {
+  const jobList = await Jobs.findAll();
+  return jobList ? jobList : false;
+};
+
+module.exports = { createJobServer, getAllJobsServer };

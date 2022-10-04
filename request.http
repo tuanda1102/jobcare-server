@@ -33,7 +33,7 @@ Content-Type:  application/json
 
 ###
 POST http://localhost:5000/api/job/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoicmVjcnVpdGVyQGdtYWlsLmNvbSIsInJvbGUiOiJyZWNydWl0ZXIiLCJpYXQiOjE2NjQ4MTU3NTYsImV4cCI6MTY2NDgyMjk1Nn0.O882EHSZSTodKO36RgKF9SkanwPxphhzOmFuYPyfw7Q
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoicmVjcnVpdGVyQGdtYWlsLmNvbSIsInJvbGUiOiJyZWNydWl0ZXIiLCJpYXQiOjE2NjQ4NDQwNjUsImV4cCI6MTY2NDg1MTI2NX0.ksJzTh7L3ou-dgktOE_8Q0qm2l-r1VtecMJb5k2t1pU
 Content-Type:  application/json
 
 {
@@ -48,6 +48,11 @@ Content-Type:  application/json
     "workFrom": "fulltime",
     "endDate": "20/10/2022",
     "isDeleted": false,
-    "recruiterId": 3,
     "jobCategoryId": 2
 } 
+
+###
+GET http://localhost:5000/api/job/
+
+###
+GET http://localhost:5000/api/user/3
