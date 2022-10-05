@@ -2,10 +2,9 @@ POST  http://localhost:5000/api/auth/register
 Content-Type:  application/json
 
 {
-    "email": "recruiter2@gmail.com",
+    "email": "phamanhtuannew@gmail.com",
     "password": "123123",
-    "fullname": "Tuan Da",
-    "role": "recruiter"
+    "fullname": "Tuan Da"
 }
 
 ###
@@ -58,10 +57,13 @@ GET http://localhost:5000/api/job/
 GET http://localhost:5000/api/user/3
 
 ### 
-POST http://localhost:5000/api/assess/3
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoicGhhbWFuaHR1YW5AZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NjQ5NjM5NjYsImV4cCI6MTY2NDk3MTE2Nn0.i8-6UyI3SpT2607e7R4Erd73bJWNBPtDcIKdcVDrbyg
+POST http://localhost:5000/api/assess/5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiZW1haWwiOiJwaGFtYW5odHVhbkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY2NDk4MzEyNCwiZXhwIjoxNjY0OTkwMzI0fQ.aSGKihsHolV998XD9V9qiH_4IHX7ncULTE9bfCMB118
 Content-Type:  application/json
 
 {
-    "message": "Công ty này khá ổn"
+    "message": "không được cho lắm"
 }
+
+###
+GET http://localhost:5000/api/user/3

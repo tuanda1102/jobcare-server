@@ -15,6 +15,13 @@ module.exports = (sequelize, DataTypes) => {
   }
   Assess.init(
     {
+      id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true,
+      },
       message: DataTypes.STRING,
       userId: DataTypes.INTEGER,
       recruiterId: DataTypes.INTEGER,
