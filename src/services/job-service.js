@@ -32,15 +32,14 @@ const createJobService = async (req, res) => {
 };
 
 const getAllJobsService = async (req, res) => {
-  const jobList = await getAllJobsServer();
-
-  if (!jobList) {
-    return res
-      .status(statusCode.BAD_REQUEST)
-      .json(returnResponse(false, apiMessage.DATA_FOUND));
-  }
-
   try {
+    const jobList = await getAllJobsServer();
+
+    if (!jobList) {
+      return res
+        .status(statusCode.BAD_REQUEST)
+        .json(returnResponse(false, apiMessage.DATA_FOUND));
+    }
     return res
       .status(statusCode.OK)
       .json(returnResponse(false, apiMessage.SUCCESS, jobList));

@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "1102",
+    "database": "jobcare",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

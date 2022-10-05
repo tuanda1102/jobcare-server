@@ -14,4 +14,5 @@ module.exports = {
   port: process.env.DATABASE_PORT,
   database: process.env.DATABASE_NAME,
   dialect: process.env.DATABASE_DIALECT,
+  freezeTableName: true,
 };
