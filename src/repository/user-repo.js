@@ -57,7 +57,7 @@ const getDetailRecruiterServer = async (recruiterId) => {
     where: {
       id: recruiterId,
     },
-    include: "recruiter_jobs",
+    include: ["recruiter_jobs", "recruiter_assess"],
   });
   return recruiterDetails ? recruiterDetails : false;
 };
