@@ -1,6 +1,7 @@
 const {
   assessRecruiterService,
   deleteAssessService,
+  changeAssessService,
 } = require("../services/assess-service");
 
 const assessRecruiter = async (req, res) => {
@@ -11,4 +12,8 @@ const deleteAssess = async (req, res) => {
   return await deleteAssessService(req, res);
 };
 
-module.exports = { assessRecruiter, deleteAssess };
+const changeAssess = async (req, res) => {
+  return await changeAssessService(req, res);
+};
+
+module.exports = { assessRecruiter, deleteAssess, changeAssess };

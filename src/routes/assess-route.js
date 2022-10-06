@@ -2,6 +2,7 @@ const express = require("express");
 const {
   assessRecruiter,
   deleteAssess,
+  changeAssess,
 } = require("../controllers/assess-controller");
 const assessRoutes = express.Router();
 const { verifyToken, checkUser } = require("../middleware/auth-middleware");
@@ -11,9 +12,14 @@ const { verifyToken, checkUser } = require("../middleware/auth-middleware");
 // @access private
 assessRoutes.post("/:id", verifyToken, assessRecruiter);
 
-// @route POST api/assess
+// @route DELETE api/assess
 // @desc Delete assess a recruiter
 // @access private
 assessRoutes.delete("/:id", verifyToken, deleteAssess);
+
+// @route PUT api/assess
+// @desc Change assess a recruiter
+// @access private
+assessRoutes.put("/:id", verifyToken, changeAssess);
 
 module.exports = assessRoutes;

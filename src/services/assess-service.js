@@ -4,6 +4,7 @@ const {
   createAssessServer,
   deleteAssessServer,
   findAssessServer,
+  updateAssessServer,
 } = require("../repository/assess-repo");
 
 const assessRecruiterService = async (req, res) => {
@@ -65,4 +66,44 @@ const deleteAssessService = async (req, res) => {
   }
 };
 
-module.exports = { assessRecruiterService, deleteAssessService };
+const changeAssessService = async (req, res) => {
+  const assessId = req.params.id;
+  const userId = req.id;
+  const { message } = req.body;
+
+  try {
+    // Kiểm tra xem đánh giá đó có phải của người dùng này hay không
+    // Nếu không chính xác thì trả về lỗi
+    const assess = await findAssessServer(assessId);
+
+    if (!assess) {
+      return res
+        .status(statusCode.BAD_REQUEST)
+        .json(returnResponse(false, apiMessage.DATA_FOUND));
+    }
+
+    if (assess.userId !== userId) {
+      return res
+        .status(statusCode.BAD_REQUEST)
+        .json(returnResponse(false, apiMessage.FORBIDDEN));
+    }
+
+    // All good
+    const assessUpdated = await updateAssessServer(assessId, message);
+
+    if (!assessUpdated)
+      return res
+        .status(statusCode.BAD_REQUEST)
+        .json(returnResponse(false, apiMessage.DB_ERROR));
+
+    return res
+      .status(statusCode.OK)
+      .json(returnResponse(true, apiMessage.SUCCESS));
+  } catch (error) {}
+};
+
+module.exports = {
+  assessRecruiterService,
+  deleteAssessService,
+  changeAssessService,
+};

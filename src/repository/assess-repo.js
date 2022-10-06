@@ -20,4 +20,24 @@ const deleteAssessServer = async (assessId) => {
   return idDeleted ? true : false;
 };
 
-module.exports = { createAssessServer, deleteAssessServer, findAssessServer };
+const updateAssessServer = async (assessId, payload) => {
+  const assessUpdated = await Assess.update(
+    {
+      message: payload,
+    },
+    {
+      where: {
+        id: assessId,
+      },
+    }
+  );
+
+  return assessUpdated ? assessUpdated : false;
+};
+
+module.exports = {
+  createAssessServer,
+  deleteAssessServer,
+  findAssessServer,
+  updateAssessServer,
+};
