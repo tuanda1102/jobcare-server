@@ -4,7 +4,8 @@ Content-Type:  application/json
 {
     "email": "phamanhtuannew@gmail.com",
     "password": "123123",
-    "fullname": "Tuan Da"
+    "fullname": "Tuan Da",
+    "role": "recruiter"
 }
 
 ###
@@ -12,7 +13,7 @@ POST  http://localhost:5000/api/auth/login
 Content-Type:  application/json
 
 {
-    "email": "phamanhtuan@gmail.com",
+    "email": "recruiter@gmail.com",
     "password": "123123"
 }
 
@@ -67,3 +68,26 @@ Content-Type:  application/json
 
 ###
 GET http://localhost:5000/api/user/3
+
+###
+POST http://localhost:5000/api/job/5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzIiwiZW1haWwiOiJyZWNydWl0ZXJAZ21haWwuY29tIiwicm9sZSI6InJlY3J1aXRlciIsImlhdCI6MTY2NDk4NzY4NywiZXhwIjoxNjY0OTk0ODg3fQ.d_zPREKaxvk6tb0kt5fiogLpGNESq1JCy8zSx9GdCko
+Content-Type:  application/json
+
+{
+    "title": "Sửa job có id là 5",
+    "content": "Đã sửa job rồi nè",
+    "salary": "Từ 20 triệu",
+    "level": "Senior",
+    "skills": "reactjs",
+    "location": "Đà nẵng",
+    "welfare": "Tăng lương 2 lần 1 năm",
+    "amount": "5 nguoi",
+    "workFrom": "fulltime",
+    "endDate": "20/10/2022",
+    "isDeleted": false,
+    "jobCategoryId": 2
+} 
+
+###
+GET http://localhost:5000/api/job/3

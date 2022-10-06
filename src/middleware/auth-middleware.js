@@ -1,6 +1,9 @@
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
+const { returnResponse } = require("../common/response");
+const { statusCode, apiMessage } = require("../utils/constants");
+
 const { ROLE } = require("../utils/constants");
 
 const verifyToken = async (req, res, next) => {
@@ -8,11 +11,9 @@ const verifyToken = async (req, res, next) => {
   const token = authHeader && authHeader.split(" ")[1];
 
   if (!token) {
-    return res.status(401).json({
-      success: false,
-      message: "Invalid authorization",
-      data: {},
-    });
+    return res
+      .status(statusCode.UNAUTHORIZED)
+      .json(returnResponse(false, apiMessage.UNAUTHORIZED));
   }
 
   try {
@@ -24,21 +25,17 @@ const verifyToken = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
-    return res.status(403).json({
-      success: false,
-      message: "Forbidden ",
-      data: {},
-    });
+    return res
+      .status(statusCode.FORBIDDEN)
+      .json(returnResponse(false, apiMessage.FORBIDDEN));
   }
 };
 
 const checkRecruiter = async (req, res, next) => {
   if (req.role !== ROLE.RECRUITER) {
-    return res.status(401).json({
-      success: false,
-      message: "Invalid authorization",
-      data: {},
-    });
+    return res
+      .status(statusCode.UNAUTHORIZED)
+      .json(returnResponse(false, apiMessage.UNAUTHORIZED));
   }
 
   next();
@@ -46,11 +43,9 @@ const checkRecruiter = async (req, res, next) => {
 
 const checkUser = async (req, res, next) => {
   if (req.role !== ROLE.USER) {
-    return res.status(401).json({
-      success: false,
-      message: "Invalid authorization",
-      data: {},
-    });
+    return res
+      .status(statusCode.UNAUTHORIZED)
+      .json(returnResponse(false, apiMessage.UNAUTHORIZED));
   }
 
   next();

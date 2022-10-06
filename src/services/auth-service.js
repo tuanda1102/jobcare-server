@@ -102,6 +102,7 @@ const loginService = async (req, res) => {
       })
     );
   } catch (error) {
+    console.log(error);
     res
       .status(statusCode.INTERNAL_SERVER_ERROR)
       .json(returnResponse(false, apiMessage.SERVER_ERROR));

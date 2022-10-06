@@ -9,7 +9,7 @@ module.exports = {
     OK: 200,
     BAD_REQUEST: 400,
     INTERNAL_SERVER_ERROR: 500,
-    UNAUTHORIZED: 403,
+    UNAUTHORIZED: 401,
     MULTIPLE_CHOICES: 300,
     FORBIDDEN: 403,
   },
@@ -27,5 +27,6 @@ module.exports = {
     DATA_FOUND: "Không tìm thấy dữ liệu",
     EXPIRED_DATE:
       "Bạn đã hết thời gian sử dụng ứng dụng, vui lòng liên hệ với chúng tôi để gia hạn!",
+    FORBIDDEN: "Không thể truy cập!",
   },
 };

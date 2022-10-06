@@ -1,8 +1,6 @@
 const express = require("express");
 const userRoutes = express.Router();
 
-const { Users } = require("../database/models");
-
 const { verifyToken, checkUser } = require("../middleware/auth-middleware");
 const {
   updateUserProfile,

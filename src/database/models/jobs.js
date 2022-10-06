@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
       workFrom: DataTypes.STRING,
       endDate: DataTypes.STRING,
       isDeleted: DataTypes.BOOLEAN,
-      recruiterId: DataTypes.INTEGER,
+      recruiterId: DataTypes.UUID,
     },
     {
       sequelize,
