@@ -4,6 +4,7 @@ const {
   updateJobService,
   getJobService,
   deleteJobService,
+  getJobsByCategoryService,
 } = require("../services/job-service");
 
 const getAllJobs = async (req, res) => {
@@ -12,6 +13,10 @@ const getAllJobs = async (req, res) => {
 
 const getJob = async (req, res) => {
   return await getJobService(req, res);
+};
+
+const getJobsByCategory = async (req, res) => {
+  return await getJobsByCategoryService(req, res);
 };
 
 const createJob = async (req, res) => {
@@ -26,4 +31,11 @@ const deleteJob = async (req, res) => {
   return await deleteJobService(req, res);
 };
 
-module.exports = { getAllJobs, getJob, createJob, updateJob, deleteJob };
+module.exports = {
+  getAllJobs,
+  getJob,
+  createJob,
+  updateJob,
+  deleteJob,
+  getJobsByCategory,
+};

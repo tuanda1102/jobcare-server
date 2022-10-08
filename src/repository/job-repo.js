@@ -30,6 +30,16 @@ const getJobServer = async (jobId) => {
   return job ? job : false;
 };
 
+const getJobsByCategoryServer = async (categoryId) => {
+  const jobCategories = await Jobs.findAll({
+    where: {
+      categoryId: categoryId,
+    },
+  });
+
+  return jobCategories ? jobCategories : false;
+};
+
 const getAllJobsServer = async () => {
   const jobList = await Jobs.findAll({
     where: {
@@ -54,4 +64,5 @@ module.exports = {
   getAllJobsServer,
   updateJobServer,
   getJobServer,
+  getJobsByCategoryServer,
 };

@@ -2,10 +2,15 @@
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Jobs extends Model {
+    // Define association
     static associate(models) {
       Jobs.belongsTo(models.Users, {
         foreignKey: "recruiterId",
         as: "recruiter_jobs",
+      });
+      Jobs.belongsTo(models.JobCategories, {
+        foreignKey: "categoryId",
+        as: "job_categories",
       });
     }
   }

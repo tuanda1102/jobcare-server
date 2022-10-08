@@ -3,6 +3,7 @@ const {
   getAllJobsServer,
   updateJobServer,
   getJobServer,
+  getJobsByCategoryServer,
 } = require("../repository/job-repo");
 const { getUser } = require("../repository/user-repo");
 const {
@@ -73,6 +74,29 @@ const getJobService = async (req, res) => {
     return res
       .status(statusCode.OK)
       .json(returnResponse(true, apiMessage.SUCCESS, job));
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(statusCode.INTERNAL_SERVER_ERROR)
+      .json(returnResponseServerError());
+  }
+};
+
+const getJobsByCategoryService = async (req, res) => {
+  const categoryId = req.params.id;
+
+  try {
+    const jobs = await getJobsByCategoryServer(categoryId);
+
+    if (!jobs) {
+      return res
+        .status(statusCode.BAD_REQUEST)
+        .json(returnResponse(false, apiMessage.DATA_FOUND));
+    }
+
+    return res
+      .status(statusCode.OK)
+      .json(returnResponse(true, apiMessage.SUCCESS, jobs));
   } catch (error) {
     console.log(error);
     return res
@@ -152,4 +176,5 @@ module.exports = {
   updateJobService,
   getJobService,
   deleteJobService,
+  getJobsByCategoryService,
 };

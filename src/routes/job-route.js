@@ -6,6 +6,7 @@ const {
   createJob,
   updateJob,
   deleteJob,
+  getJobsByCategory,
 } = require("../controllers/job-controller");
 
 const {
@@ -22,6 +23,11 @@ jobRoutes.get("/", getAllJobs);
 // @desc Get detail 1 job by id
 // @access public
 jobRoutes.get("/:id", getJob);
+
+// @route GET api/job/category/id
+// @desc Get all job of category
+// @access public
+jobRoutes.get("/category/:id", getJobsByCategory);
 
 // @route POST api/job/
 // @desc create a job
