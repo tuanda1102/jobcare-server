@@ -31,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       endDate: DataTypes.STRING,
       isDeleted: DataTypes.BOOLEAN,
       recruiterId: DataTypes.UUID,
+      categoryId: DataTypes.INTEGER,
     },
     {
       sequelize,
