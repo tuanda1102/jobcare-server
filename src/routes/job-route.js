@@ -31,7 +31,7 @@ jobRoutes.post("/", verifyToken, checkRecruiter, createJob);
 // @route UPDATE api/job/id
 // @desc update a jobs
 // @access private
-jobRoutes.post("/:id", verifyToken, checkRecruiter, updateJob);
+jobRoutes.put("/:id", verifyToken, checkRecruiter, updateJob);
 
 // @route DELETE api/job/id
 // @desc Delete a jobs

@@ -34,7 +34,7 @@ const registerService = async (req, res) => {
 
     const hashedPassword = await argon2.hash(password);
 
-    await createUser({
+    const dataUser = await createUser({
       email,
       fullname,
       password: hashedPassword,

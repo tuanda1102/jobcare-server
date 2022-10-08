@@ -3,6 +3,7 @@ const {
   getAllJobsService,
   updateJobService,
   getJobService,
+  deleteJobService,
 } = require("../services/job-service");
 
 const getAllJobs = async (req, res) => {
@@ -21,6 +22,8 @@ const updateJob = async (req, res) => {
   return await updateJobService(req, res);
 };
 
-const deleteJob = async (req, res) => {};
+const deleteJob = async (req, res) => {
+  return await deleteJobService(req, res);
+};
 
 module.exports = { getAllJobs, getJob, createJob, updateJob, deleteJob };

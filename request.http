@@ -2,18 +2,17 @@ POST  http://localhost:5000/api/auth/register
 Content-Type:  application/json
 
 {
-    "email": "phamanhtuannew@gmail.com",
+    "email": "tuandanew2@gmail.com",
     "password": "123123",
-    "fullname": "Tuan Da",
-    "role": "recruiter"
+    "fullname": "Tuan Da"
 }
-
+ 
 ###
 POST  http://localhost:5000/api/auth/login
 Content-Type:  application/json
 
 {
-    "email": "recruiter@gmail.com",
+    "email": "phamanhtuan@gmail.com",
     "password": "123123"
 }
 
@@ -33,12 +32,12 @@ Content-Type:  application/json
 
 ###
 POST http://localhost:5000/api/job/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoicmVjcnVpdGVyQGdtYWlsLmNvbSIsInJvbGUiOiJyZWNydWl0ZXIiLCJpYXQiOjE2NjQ4NDQwNjUsImV4cCI6MTY2NDg1MTI2NX0.ksJzTh7L3ou-dgktOE_8Q0qm2l-r1VtecMJb5k2t1pU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MjMxODI3OC1kYzdhLTRjODUtYjc5ZS03MmU0NjA3MDFjZjIiLCJlbWFpbCI6InJlY3J1aXRlci10ZXN0QGdtYWlsLmNvbSIsInJvbGUiOiJyZWNydWl0ZXIiLCJpYXQiOjE2NjUwNTE0NTUsImV4cCI6MTY2NTA1ODY1NX0.gh6euJY4S7Ut0TgPE_ya7haKrOfAx8HEVqrlVQ82Yf8
 Content-Type:  application/json
 
 {
-    "title": "Tìm HR cho công ty",
-    "content": "Tao tuyển mày về làm mình làm mẩy oke a ba la trap khè khè khè",
+    "title": "Trần ngạc đâng phưng",
+    "content": "hé lô",
     "salary": "Từ 20 triệu",
     "level": "Senior",
     "skills": "reactjs",
@@ -55,27 +54,27 @@ Content-Type:  application/json
 GET http://localhost:5000/api/job/
 
 ###
-GET http://localhost:5000/api/user/3
+GET http://localhost:5000/api/user/5
 
 ### 
 POST http://localhost:5000/api/assess/5
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiZW1haWwiOiJwaGFtYW5odHVhbkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY2NDk4MzEyNCwiZXhwIjoxNjY0OTkwMzI0fQ.aSGKihsHolV998XD9V9qiH_4IHX7ncULTE9bfCMB118
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiZW1haWwiOiJwaGFtYW5odHVhbkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY2NTIyMDU4OCwiZXhwIjoxNjY1MjI3Nzg4fQ.NL71Vu8t5zgYKChR734gG0m6sabP90tnoVvQzoa3EV8
 Content-Type:  application/json
 
 {
-    "message": "không được cho lắm"
+    "message": "Cmt test migrations"
 }
 
 ###
 GET http://localhost:5000/api/user/3
 
 ###
-POST http://localhost:5000/api/job/5
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzIiwiZW1haWwiOiJyZWNydWl0ZXJAZ21haWwuY29tIiwicm9sZSI6InJlY3J1aXRlciIsImlhdCI6MTY2NDk4NzY4NywiZXhwIjoxNjY0OTk0ODg3fQ.d_zPREKaxvk6tb0kt5fiogLpGNESq1JCy8zSx9GdCko
+PUT http://localhost:5000/api/job/b1993b69-3b61-45da-9824-4a63ee2f522a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MjMxODI3OC1kYzdhLTRjODUtYjc5ZS03MmU0NjA3MDFjZjIiLCJlbWFpbCI6InJlY3J1aXRlci10ZXN0QGdtYWlsLmNvbSIsInJvbGUiOiJyZWNydWl0ZXIiLCJpYXQiOjE2NjUyMDkwMDksImV4cCI6MTY2NTIxNjIwOX0.BH8OXEhQEOIJJxRgdhnTFIcKULPfWdE1m7krsFHlwsE
 Content-Type:  application/json
 
 {
-    "title": "Sửa job có id là 5",
+    "title": "Sửa Job của recruiter-test",
     "content": "Đã sửa job rồi nè",
     "salary": "Từ 20 triệu",
     "level": "Senior",
@@ -90,4 +89,21 @@ Content-Type:  application/json
 } 
 
 ###
-GET http://localhost:5000/api/job/3
+DELETE  http://localhost:5000/api/job/b1993b69-3b61-45da-9824-4a63ee2f522a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MjMxODI3OC1kYzdhLTRjODUtYjc5ZS03MmU0NjA3MDFjZjIiLCJlbWFpbCI6InJlY3J1aXRlci10ZXN0QGdtYWlsLmNvbSIsInJvbGUiOiJyZWNydWl0ZXIiLCJpYXQiOjE2NjUyMTg4NTMsImV4cCI6MTY2NTIyNjA1M30.qzg_hP7awF5kwyjKazhDN0UJdOe4cCbWW7XZ8z68Veo
+
+###
+GET http://localhost:5000/api/job/b1993b69-3b61-45da-9824-4a63ee2f522a
+
+###
+DELETE http://localhost:5000/api/assess/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiZW1haWwiOiJwaGFtYW5odHVhbkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY2NTA1NjkzMywiZXhwIjoxNjY1MDY0MTMzfQ.g8uslAYbtneS3MojEUIp7dxIHglNXL_jmpqMa7CQkoI
+
+###
+PUT http://localhost:5000/api/assess/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiZW1haWwiOiJwaGFtYW5odHVhbkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY2NTA3NjIwOCwiZXhwIjoxNjY1MDgzNDA4fQ.vbFHVfRxkROeWOeEmS86YAwuVeTFP2LmOZ2WtQ1VPrw
+Content-Type:  application/json
+
+{
+    "message": "Đã sửa comment"
+}

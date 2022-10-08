@@ -6,17 +6,24 @@ const {
   findAssessServer,
   updateAssessServer,
 } = require("../repository/assess-repo");
+const { getUser } = require("../repository/user-repo");
 
 const assessRecruiterService = async (req, res) => {
   const userId = req.id;
+  const userEmail = req.email;
   const recruiterId = req.params.id;
 
   try {
+    const userData = await getUser(userEmail);
+
     const dataAssess = {
       ...req.body,
       recruiterId,
       userId,
+      username: userData.dataValues.fullname,
+      useremail: userData.dataValues.email,
     };
+
     const newAssess = await createAssessServer(dataAssess);
 
     return res

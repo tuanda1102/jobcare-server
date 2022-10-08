@@ -5,7 +5,7 @@ const {
   changeAssess,
 } = require("../controllers/assess-controller");
 const assessRoutes = express.Router();
-const { verifyToken, checkUser } = require("../middleware/auth-middleware");
+const { verifyToken } = require("../middleware/auth-middleware");
 
 // @route POST api/assess
 // @desc Assess a recruiter

@@ -1,4 +1,4 @@
-const { Users } = require("../database/models");
+const { Users, Jobs } = require("../database/models");
 
 const getUserList = async () => {
   const userList = await Users.findAll();
@@ -16,7 +16,7 @@ const getUser = async (email) => {
 
 const createUser = async (data) => {
   const user = await Users.create(data);
-  return user;
+  return user ? user : false;
 };
 
 const updateRefreshToken = async (user, refreshToken) => {
@@ -56,6 +56,9 @@ const getDetailRecruiterServer = async (recruiterId) => {
   const recruiterDetails = await Users.findOne({
     where: {
       id: recruiterId,
+    },
+    attributes: {
+      exclude: ["password", "refreshToken", "createdAt", "updatedAt"],
     },
     include: ["recruiter_jobs", "recruiter_assess"],
   });

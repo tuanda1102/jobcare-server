@@ -15,7 +15,6 @@ const getJobServer = async (jobId) => {
         model: Users,
         attributes: {
           exclude: [
-            "id",
             "password",
             "role",
             "refreshToken",
@@ -32,7 +31,11 @@ const getJobServer = async (jobId) => {
 };
 
 const getAllJobsServer = async () => {
-  const jobList = await Jobs.findAll();
+  const jobList = await Jobs.findAll({
+    where: {
+      isDeleted: false,
+    },
+  });
   return jobList ? jobList : false;
 };
 

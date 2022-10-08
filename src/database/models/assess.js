@@ -25,6 +25,8 @@ module.exports = (sequelize, DataTypes) => {
       message: DataTypes.TEXT,
       userId: DataTypes.UUID,
       recruiterId: DataTypes.UUID,
+      username: DataTypes.STRING,
+      useremail: DataTypes.STRING,
     },
     {
       sequelize,

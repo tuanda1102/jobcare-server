@@ -88,15 +88,25 @@ const updateJobService = async (req, res) => {
   try {
     // Kiểm tra xem id của người dùng và id của Job có trùng khớp nhau không
     // Nếu trùng khớp mới cho người dùng sửa Job này
+    const job = await getJobServer(jobId);
 
+    if (recruiterId !== job.recruiterId) {
+      return res
+        .status(statusCode.UNAUTHORIZED)
+        .json(false, apiMessage.UNAUTHORIZED);
+    }
+
+    // ALl good
     // Update Job
-    const newJob = await updateJobServer(jobId, req.body);
+    const isUpdated = await updateJobServer(jobId, req.body);
 
-    if (!newJob) {
+    if (!isUpdated) {
       return res
         .status(statusCode.BAD_REQUEST)
         .json(returnResponse(false, apiMessage.DATA_FOUND));
     }
+
+    const newJob = await getJobServer(jobId);
 
     return res
       .status(statusCode.OK)
@@ -109,9 +119,37 @@ const updateJobService = async (req, res) => {
   }
 };
 
+const deleteJobService = async (req, res) => {
+  const recruiterId = req.id;
+  const jobId = req.params.id;
+
+  // Kiểm tra xem id của người dùng và id của Job có trùng khớp nhau không
+  // Nếu trùng khớp mới cho người dùng sửa Job này
+  const job = await getJobServer(jobId);
+
+  if (recruiterId !== job.recruiterId) {
+    return res
+      .status(statusCode.UNAUTHORIZED)
+      .json(false, apiMessage.UNAUTHORIZED);
+  }
+
+  const idDeleted = await updateJobServer(jobId, { isDeleted: true });
+
+  if (!idDeleted) {
+    return res
+      .status(statusCode.BAD_REQUEST)
+      .json(returnResponse(false, apiMessage.DATA_FOUND));
+  }
+
+  return res
+    .status(statusCode.OK)
+    .json(returnResponse(true, apiMessage.SUCCESS));
+};
+
 module.exports = {
   createJobService,
   getAllJobsService,
   updateJobService,
   getJobService,
+  deleteJobService,
 };
