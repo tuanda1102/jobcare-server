@@ -4,6 +4,7 @@ const {
   updateJobServer,
   getJobServer,
   getJobsByCategoryServer,
+  getCategoryById,
 } = require("../repository/job-repo");
 const { getUser } = require("../repository/user-repo");
 const {
@@ -86,6 +87,7 @@ const getJobsByCategoryService = async (req, res) => {
   const categoryId = req.params.id;
 
   try {
+    const category = await getCategoryById(categoryId);
     const jobs = await getJobsByCategoryServer(categoryId);
 
     if (!jobs) {
@@ -94,9 +96,12 @@ const getJobsByCategoryService = async (req, res) => {
         .json(returnResponse(false, apiMessage.DATA_FOUND));
     }
 
-    return res
-      .status(statusCode.OK)
-      .json(returnResponse(true, apiMessage.SUCCESS, jobs));
+    return res.status(statusCode.OK).json(
+      returnResponse(true, apiMessage.SUCCESS, {
+        category,
+        jobs,
+      })
+    );
   } catch (error) {
     console.log(error);
     return res

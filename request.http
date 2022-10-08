@@ -12,7 +12,7 @@ POST  http://localhost:5000/api/auth/login
 Content-Type:  application/json
 
 {
-    "email": "phamanhtuan@gmail.com",
+    "email": "recruiter-test@gmail.com",
     "password": "123123"
 }
 
@@ -32,7 +32,7 @@ Content-Type:  application/json
 
 ###
 POST http://localhost:5000/api/job/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MjMxODI3OC1kYzdhLTRjODUtYjc5ZS03MmU0NjA3MDFjZjIiLCJlbWFpbCI6InJlY3J1aXRlci10ZXN0QGdtYWlsLmNvbSIsInJvbGUiOiJyZWNydWl0ZXIiLCJpYXQiOjE2NjUwNTE0NTUsImV4cCI6MTY2NTA1ODY1NX0.gh6euJY4S7Ut0TgPE_ya7haKrOfAx8HEVqrlVQ82Yf8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MjMxODI3OC1kYzdhLTRjODUtYjc5ZS03MmU0NjA3MDFjZjIiLCJlbWFpbCI6InJlY3J1aXRlci10ZXN0QGdtYWlsLmNvbSIsInJvbGUiOiJyZWNydWl0ZXIiLCJpYXQiOjE2NjUyNTIzNzksImV4cCI6MTY2NTI1OTU3OX0.PbrVWrWzsrYnWfKQcj4H7DdL20IganQK_-ThA4Jqnvw
 Content-Type:  application/json
 
 {
@@ -46,9 +46,14 @@ Content-Type:  application/json
     "amount": "5 nguoi",
     "workFrom": "fulltime",
     "endDate": "20/10/2022",
+    "categoryId": 10,
     "isDeleted": false,
     "jobCategoryId": 2
 } 
+
+###
+GET http://localhost:5000/api/job/category/10
+
 
 ###
 GET http://localhost:5000/api/job/

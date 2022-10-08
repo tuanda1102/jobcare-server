@@ -1,4 +1,4 @@
-const { Jobs, Users } = require("../database/models");
+const { Jobs, Users, JobCategories } = require("../database/models");
 
 const createJobServer = async (data) => {
   const newJob = await Jobs.create(data);
@@ -28,6 +28,16 @@ const getJobServer = async (jobId) => {
     ],
   });
   return job ? job : false;
+};
+
+const getAllCategories = async () => {
+  const categories = await JobCategories.findAll();
+  return categories ? categories : false;
+};
+
+const getCategoryById = async (categoryId) => {
+  const category = await JobCategories.findByPk(categoryId);
+  return category ? category : false;
 };
 
 const getJobsByCategoryServer = async (categoryId) => {
@@ -65,4 +75,6 @@ module.exports = {
   updateJobServer,
   getJobServer,
   getJobsByCategoryServer,
+  getAllCategories,
+  getCategoryById,
 };
