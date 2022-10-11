@@ -3,6 +3,7 @@ const {
   loginService,
   logoutService,
   checkUserService,
+  changePasswordService,
 } = require("../services/auth-service");
 
 const register = async (req, res) => {
@@ -25,4 +26,15 @@ const checkUser = async (req, res) => {
   return await checkUserService(req, res);
 };
 
-module.exports = { register, login, logout, checkUser, registerRecruiter };
+const changePassword = async (req, res) => {
+  return await changePasswordService(req, res);
+};
+
+module.exports = {
+  register,
+  login,
+  logout,
+  checkUser,
+  registerRecruiter,
+  changePassword,
+};

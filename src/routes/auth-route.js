@@ -5,6 +5,7 @@ const {
   login,
   logout,
   checkUser,
+  changePassword,
 } = require("../controllers/auth-controller");
 const authRoutes = express.Router();
 
@@ -29,6 +30,11 @@ authRoutes.post("/login", login);
 // @desc Logout a user
 // @access private
 authRoutes.delete("/logout", verifyToken, logout);
+
+// @route PUT api/auth/change
+// @desc Change password a user
+// @access private
+authRoutes.put("/change", verifyToken, changePassword);
 
 // @route GET api/auth/
 // @desc Check if user is logged in

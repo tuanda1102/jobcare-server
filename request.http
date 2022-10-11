@@ -112,3 +112,14 @@ Content-Type:  application/json
 {
     "message": "Đã sửa comment"
 }
+
+###
+PUT http://localhost:5000/api/auth/change
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiZW1haWwiOiJwaGFtYW5odHVhbkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY2NTA3NjIwOCwiZXhwIjoxNjY1MDgzNDA4fQ.vbFHVfRxkROeWOeEmS86YAwuVeTFP2LmOZ2WtQ1VPrw
+Content-Type:  application/json
+
+{
+    "email": "tuanda2812@gmail.com",
+    "password": "123123",
+    "newpassword": "dongphuong"
+}

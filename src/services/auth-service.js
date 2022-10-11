@@ -8,6 +8,7 @@ const {
   createUser,
   updateRefreshToken,
   deleteRefreshToken,
+  updateProfile,
 } = require("../repository/user-repo");
 
 const registerService = async (req, res) => {
@@ -34,7 +35,7 @@ const registerService = async (req, res) => {
 
     const hashedPassword = await argon2.hash(password);
 
-    const dataUser = await createUser({
+    await createUser({
       email,
       fullname,
       password: hashedPassword,
@@ -109,6 +110,52 @@ const loginService = async (req, res) => {
   }
 };
 
+const changePasswordService = async (req, res) => {
+  const email = req.email;
+  const { password, newPassword } = req.body;
+
+  // Kiểm tra xem client có gửi đầy đủ data cần thiết hay chưa
+  if (!email || !password || !newPassword) {
+    return res
+      .status(statusCode.BAD_REQUEST)
+      .json(returnResponse(false, apiMessage.DATA_MISSING));
+  }
+
+  try {
+    // Kiểm tra xem user đó có tồn tại hay chưa
+    const user = await getUser(email);
+
+    if (!user) {
+      return res
+        .status(statusCode.BAD_REQUEST)
+        .json(returnResponse(false, apiMessage.LOGIN_FAILED));
+    }
+
+    // Nếu có thì kiểm tra xem mật khẩu người dùng vừa nhập có hợp lệ hay không
+    const passwordValid = await argon2.verify(user.password, password);
+
+    // Password không hợp lệ
+    if (!passwordValid) {
+      return res
+        .status(statusCode.BAD_REQUEST)
+        .json(returnResponse(false, apiMessage.LOGIN_FAILED));
+    }
+
+    // All Good
+    const hashedPassword = await argon2.hash(newPassword);
+    await updateProfile(user.id, { password: hashedPassword });
+
+    return res
+      .status(statusCode.OK)
+      .json(returnResponse(true, apiMessage.SUCCESS));
+  } catch (error) {
+    console.log(error);
+    res
+      .status(statusCode.INTERNAL_SERVER_ERROR)
+      .json(returnResponse(false, apiMessage.SERVER_ERROR));
+  }
+};
+
 const logoutService = async (req, res) => {
   try {
     await deleteRefreshToken(req.id);
@@ -153,4 +200,5 @@ module.exports = {
   loginService,
   logoutService,
   checkUserService,
+  changePasswordService,
 };
