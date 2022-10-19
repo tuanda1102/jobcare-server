@@ -12,8 +12,8 @@ POST  http://localhost:5000/api/auth/login
 Content-Type:  application/json
 
 {
-    "email": "recruiter-test@gmail.com",
-    "password": "123123"
+    "email": "tuanda2812@gmail.com",
+    "password": "dongphuong"
 }
 
 ###
@@ -115,11 +115,19 @@ Content-Type:  application/json
 
 ###
 PUT http://localhost:5000/api/auth/change
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiZW1haWwiOiJwaGFtYW5odHVhbkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY2NTA3NjIwOCwiZXhwIjoxNjY1MDgzNDA4fQ.vbFHVfRxkROeWOeEmS86YAwuVeTFP2LmOZ2WtQ1VPrw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3OTRiZGM2NS04ZmRjLTRkZDUtYTU1OS05YWZjZWU3ZmNkYmQiLCJlbWFpbCI6InR1YW5kYTI4MTJAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NjU0ODIwMTEsImV4cCI6MTY2NTQ4OTIxMX0.Ys0xExg73ab5ZzxLW7mD8rOcQNhnGb0Bcamd2_bxXeQ
 Content-Type:  application/json
 
 {
     "email": "tuanda2812@gmail.com",
     "password": "123123",
-    "newpassword": "dongphuong"
+    "newPassword": "dongphuong"
+}
+
+###
+POST http://localhost:5000/api/auth/refreshtoken
+Content-Type:  application/json
+
+{
+    "refreshToken" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3OTRiZGM2NS04ZmRjLTRkZDUtYTU1OS05YWZjZWU3ZmNkYmQiLCJlbWFpbCI6InR1YW5kYTI4MTJAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NjYwNjAzMzUsImV4cCI6MTY5NzU5NjMzNX0.tk7BiASLWwv0yP48Vo1NyxqNeMAlKVs80GC_8iTjblY"
 }

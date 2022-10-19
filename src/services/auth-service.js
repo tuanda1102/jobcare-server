@@ -1,5 +1,7 @@
 require("dotenv").config();
+const jwt = require("jsonwebtoken");
 const argon2 = require("argon2");
+
 const { generateToken } = require("../utils/auth-util");
 const { returnResponse } = require("../common/response");
 const { statusCode, apiMessage } = require("../utils/constants");
@@ -9,6 +11,7 @@ const {
   updateRefreshToken,
   deleteRefreshToken,
   updateProfile,
+  getRefreshTokenServer,
 } = require("../repository/user-repo");
 
 const registerService = async (req, res) => {
@@ -195,10 +198,59 @@ const checkUserService = async (req, res) => {
   }
 };
 
+// Refresh token
+const refreshTokenService = async (req, res) => {
+  // Kiểm tra refreshToken được gửi xuống từ body
+  const { refreshToken } = req.body;
+
+  if (refreshToken == null) {
+    return res
+      .status(statusCode.FORBIDDEN)
+      .json(returnResponse(false, apiMessage.DATA_FOUND));
+  }
+
+  try {
+    // Lấy ra user chứa refreshToken đó
+    let userDb = await getRefreshTokenServer(refreshToken);
+
+    if (!userDb.dataValues.refreshToken) {
+      return res
+        .status(statusCode.FORBIDDEN)
+        .json(returnResponse(false, apiMessage.DATA_FOUND));
+    }
+
+    const refreshTokenDecoded = jwt.verify(
+      refreshToken,
+      process.env.ACCESS_TOKEN_SECRET
+    );
+
+    if (Date.now() >= refreshTokenDecoded.exp * 1000) {
+      return res
+        .status(statusCode.FORBIDDEN)
+        .json(returnResponse(false, apiMessage.DATA_FOUND));
+    }
+
+    const newTokens = generateToken(userDb);
+
+    // Update refreshToken
+    await updateRefreshToken(userDb, newTokens.refreshToken);
+
+    return res
+      .status(statusCode.OK)
+      .json(returnResponse(true, apiMessage.SUCCESS, newTokens));
+  } catch (error) {
+    console.log(error);
+    res
+      .status(statusCode.INTERNAL_SERVER_ERROR)
+      .json(returnResponse(false, apiMessage.SERVER_ERROR));
+  }
+};
+
 module.exports = {
   registerService,
   loginService,
   logoutService,
   checkUserService,
   changePasswordService,
+  refreshTokenService,
 };

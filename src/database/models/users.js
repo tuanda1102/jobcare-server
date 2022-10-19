@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "recruiterId",
         as: "recruiter_assess",
       });
+      Users.hasMany(models.Applicants, {
+        foreignKey: "userId",
+        as: "user_applicants",
+      });
     }
   }
   Users.init(

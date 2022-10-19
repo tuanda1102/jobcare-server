@@ -65,6 +65,19 @@ const getDetailRecruiterServer = async (recruiterId) => {
   return recruiterDetails ? recruiterDetails : false;
 };
 
+const getRefreshTokenServer = async (token) => {
+  const refreshTokenDb = await Users.findOne({
+    where: {
+      refreshToken: token,
+    },
+    attributes: {
+      exclude: ["createdAt", "updatedAt"],
+    },
+  });
+
+  return refreshTokenDb ? refreshTokenDb : false;
+};
+
 module.exports = {
   getUserList,
   getUser,
@@ -73,4 +86,5 @@ module.exports = {
   deleteRefreshToken,
   updateProfile,
   getDetailRecruiterServer,
+  getRefreshTokenServer,
 };

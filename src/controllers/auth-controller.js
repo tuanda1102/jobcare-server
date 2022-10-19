@@ -4,6 +4,7 @@ const {
   logoutService,
   checkUserService,
   changePasswordService,
+  refreshTokenService,
 } = require("../services/auth-service");
 
 const register = async (req, res) => {
@@ -30,6 +31,10 @@ const changePassword = async (req, res) => {
   return await changePasswordService(req, res);
 };
 
+const refreshToken = async (req, res) => {
+  return await refreshTokenService(req, res);
+};
+
 module.exports = {
   register,
   login,
@@ -37,4 +42,5 @@ module.exports = {
   checkUser,
   registerRecruiter,
   changePassword,
+  refreshToken,
 };
